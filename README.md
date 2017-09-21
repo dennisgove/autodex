@@ -1,6 +1,11 @@
 # autodex
 
-### Immediate Tasks for Python
+### Note Files
+
+* [Dexcom Notes](dexcom_notes.txt)
+* [Tandem t:slim Notes](tandem_notes.txt)
+
+### Immediate Tasks for Dexcom on Python
 
 - [x] Discover transmitter using standard command `sudo bluetoothctl`
 - [ ] Discover transmitter

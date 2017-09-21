@@ -32,3 +32,12 @@ hci0: Type: Primary  Bus: UART
   UP RUNNING
   RX bytes:6230 acl:0 sco:0 events:509 errors:0
   TX bytes:5842 acl:0 sco:0 commands:363 errors:0
+
+############################################################
+
+# Links
+http://www.elinux.org/RPi_Bluetooth_LE
+https://lifehacker.com/everything-you-need-to-set-up-bluetooth-on-the-raspberr-1768482065
+https://www.raspberrypi.org/forums/viewtopic.php?t=138145
+http://shawnhymel.com/665/using-python-and-ble-to-receive-data-from-the-rfduino/
+https://github.com/LoopKit/xDripG5/tree/master/xDripG5
