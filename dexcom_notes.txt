@@ -1,0 +1,34 @@
+############################################################
+
+# install bluepy
+sudo apt-get install python-pip libglib2.0-dev
+sudo pip install bluepy
+
+# running script to scan devices seems to fail
+
+############################################################
+
+# install bluetooth stuff
+sudo apt-get install bluetooth bluez blueman
+
+# scan
+$> sudo bluetoothctl
+[NEW] Controller B8:27:EB:D2:C3:F4 autodex [default]
+[bluetooth]# scan on
+Discovery started
+
+# after a while it finally gave this
+
+[NEW] Device F6:FA:94:6A:70:21 Dexcom8G
+
+# this is the same device name I see on my phone
+# in short, device found and we can now try pairing and connecting
+
+############################################################
+
+dennis@autodex:~/dev/scan $ sudo hciconfig
+hci0: Type: Primary  Bus: UART
+  BD Address: B8:27:EB:D2:C3:F4  ACL MTU: 1021:8  SCO MTU: 64:1
+  UP RUNNING
+  RX bytes:6230 acl:0 sco:0 events:509 errors:0
+  TX bytes:5842 acl:0 sco:0 commands:363 errors:0

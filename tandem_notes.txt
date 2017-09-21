@@ -1,0 +1,9 @@
+https://ask.wireshark.org/questions/11054/analysing-usb-traffic
+
+Tandem Device Up: 9.0.0.0:512
+Tandem Device Up: 10.0.0.0:512
+Tandem Device Up: 173.227.28.215:443
+Tandem Device Up: 173.227.28.215:443
+
+https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2016/september/introducing-blesuite-and-ble-replay-python-tools-for-rapid-assessment-of-bluetooth-low-energy-peripherals/
+https://github.com/nccgroup/?query=BLE
