@@ -8,7 +8,7 @@
 ### Immediate Tasks for Dexcom on Python
 
 - [x] Discover transmitter using standard command `sudo bluetoothctl`
-- [ ] Discover transmitter
+- [x] Discover transmitter
 - [ ] Pair with transmitter
 - [ ] Connect to transmitter
 - [ ] Receive any value / message from transmitter

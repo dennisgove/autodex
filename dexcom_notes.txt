@@ -1,4 +1,45 @@
 ############################################################
+## 09/21/17
+############################################################
+
+Following the instructions on this page I was able to discover the transmitter
+
+https://github.com/getsenic/gatt-python
+ - Updating/installing BlueZ via apt-get
+ - Installing BlueZ from sources
+ - Enabling your Bluetooth adapter
+ - Using BlueZ commandline tools
+   $> sudo bluetoothctl
+   [NEW] Controller B8:27:EB:D2:C3:F4 autodex [default]
+   [bluetooth]# power on
+ - Installing GATT SDK for Python
+ - Discovering nearby Bluetooth Low Energy devices
+
+test.py contains
+```
+import gatt
+
+class AnyDeviceManager(gatt.DeviceManager):
+    def device_discovered(self, device):
+        print("Discovered [%s] %s" % (device.mac_address, device.alias()))
+
+manager = AnyDeviceManager(adapter_name='hci0')
+manager.start_discovery()
+manager.run()
+```
+
+$> sudo python3 test.py
+Discovered [f6:fa:94:6a:70:21] Dexcom8G
+
+This ran for a very long time but I realized that I may have been too far, physically,
+from my raspberry pi. The pi was located ~50ft away, through 4 walls.
+
+As soon as I was walked into my office (same room as pi) the device was found.
+
+
+############################################################
+## 09/20/17
+############################################################
 
 # install bluepy
 sudo apt-get install python-pip libglib2.0-dev
@@ -6,7 +47,10 @@ sudo pip install bluepy
 
 # running script to scan devices seems to fail
 
-############################################################
+# tried this after script didn't run
+sudo pip install --no-binary :all: bluepy
+
+################
 
 # install bluetooth stuff
 sudo apt-get install bluetooth bluez blueman
@@ -24,7 +68,7 @@ Discovery started
 # this is the same device name I see on my phone
 # in short, device found and we can now try pairing and connecting
 
-############################################################
+################
 
 dennis@autodex:~/dev/scan $ sudo hciconfig
 hci0: Type: Primary  Bus: UART
@@ -33,7 +77,22 @@ hci0: Type: Primary  Bus: UART
   RX bytes:6230 acl:0 sco:0 events:509 errors:0
   TX bytes:5842 acl:0 sco:0 commands:363 errors:0
 
-############################################################
+################
+
+# install pybluez
+
+sudo apt-get update
+sudo apt-get install python-pip python-dev ipython
+
+sudo apt-get install bluetooth libbluetooth-dev
+sudo pip install pybluez
+
+################
+
+
+################
+sudo apt-get install libbluetooth-dev bluez bluez-hcidump  libboost-python-dev libboost-thread-dev libglib2.0-dev
+sudo pip install pybluez gattlib
 
 # Links
 http://www.elinux.org/RPi_Bluetooth_LE
@@ -41,3 +100,6 @@ https://lifehacker.com/everything-you-need-to-set-up-bluetooth-on-the-raspberr-1
 https://www.raspberrypi.org/forums/viewtopic.php?t=138145
 http://shawnhymel.com/665/using-python-and-ble-to-receive-data-from-the-rfduino/
 https://github.com/LoopKit/xDripG5/tree/master/xDripG5
+https://github.com/scivision/pybluez-examples#scanning-for-bluetooth-devices-from-python
+
+https://github.com/getsenic/gatt-python
