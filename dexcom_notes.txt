@@ -1,4 +1,46 @@
 ############################################################
+## 09/22/17
+############################################################
+
+I have been able to make a prelim connection to the dexcom device
+
+$> sudo python3 scan_and_connect.py
+
+  ... waited < 5 minutes ...
+
+Discovered [f6:fa:94:6a:70:21] Dexcom8G
+Connecting to Dexcom8G
+properties_changed - dbus.Dictionary({dbus.String('RSSI'): dbus.Int16(-80, variant_level=1)}, signature=dbus.Signature('sv')), dbus.Array([], signature=dbus.Signature('s'))
+[f6:fa:94:6a:70:21] Connected
+properties_changed - dbus.Dictionary({dbus.String('Connected'): dbus.Boolean(True, variant_level=1)}, signature=dbus.Signature('sv')), dbus.Array([], signature=dbus.Signature('s'))
+[f6:fa:94:6a:70:21] Resolved services
+[f6:fa:94:6a:70:21]  Service [f8083532-849e-531c-c594-30f1f86a4ea5]
+[f6:fa:94:6a:70:21]    Characteristic [f8083534-849e-531c-c594-30f1f86a4ea5]
+[f6:fa:94:6a:70:21]    Characteristic [f8083535-849e-531c-c594-30f1f86a4ea5]
+[f6:fa:94:6a:70:21]    Characteristic [f8083533-849e-531c-c594-30f1f86a4ea5]
+[f6:fa:94:6a:70:21]    Characteristic [f8083537-849e-531c-c594-30f1f86a4ea5]
+[f6:fa:94:6a:70:21]    Characteristic [f8083536-849e-531c-c594-30f1f86a4ea5]
+[f6:fa:94:6a:70:21]  Service [0000180a-0000-1000-8000-00805f9b34fb]
+[f6:fa:94:6a:70:21]    Characteristic [00002a24-0000-1000-8000-00805f9b34fb]
+[f6:fa:94:6a:70:21]    Characteristic [00002a29-0000-1000-8000-00805f9b34fb]
+[f6:fa:94:6a:70:21]    Characteristic [00002a26-0000-1000-8000-00805f9b34fb]
+[f6:fa:94:6a:70:21]  Service [00001801-0000-1000-8000-00805f9b34fb]
+[f6:fa:94:6a:70:21]    Characteristic [00002a05-0000-1000-8000-00805f9b34fb]
+properties_changed - dbus.Dictionary({dbus.String('ServicesResolved'): dbus.Boolean(True, variant_level=1)}, signature=dbus.Signature('sv')), dbus.Array([], signature=dbus.Signature('s'))
+[f6:fa:94:6a:70:21] Disconnected
+properties_changed - dbus.Dictionary({dbus.String('ServicesResolved'): dbus.Boolean(False, variant_level=1), dbus.String('Connected'): dbus.Boolean(False, variant_level=1)}, signature=dbus.Signature('sv')), dbus.Array([], signature=dbus.Signature('s'))
+
+
+These services and characteristics match the expected ones seen in the xDrip code at 
+https://github.com/StephenBlackWasAlreadyTaken/xDrip-Experimental/blob/5657d5bb7f3912013724e75cd309dfcfeda8db2c/app/src/main/java/com/eveningoutpost/dexdrip/G5Model/BluetoothServices.java#L11
+
+
+See comments in https://github.com/StephenBlackWasAlreadyTaken/xDrip-Experimental/blob/5657d5bb7f3912013724e75cd309dfcfeda8db2c/app/src/main/java/com/eveningoutpost/dexdrip/Services/G5CollectionService.java#L510
+// Check if the device has a name, the Dexcom transmitter always should. Match it with the transmitter id that was entered.
+// We get the last 2 characters to connect to the correct transmitter if there is more than 1 active or in the room.
+// If they match, connect to the device.
+
+############################################################
 ## 09/21/17
 ############################################################
 
@@ -103,3 +145,5 @@ https://github.com/LoopKit/xDripG5/tree/master/xDripG5
 https://github.com/scivision/pybluez-examples#scanning-for-bluetooth-devices-from-python
 
 https://github.com/getsenic/gatt-python
+https://flowcloud.github.io/ci20-bluetooth-LE/2015/09/10/bluetooth-control-in-python/
+https://github.com/peplin/pygatt
